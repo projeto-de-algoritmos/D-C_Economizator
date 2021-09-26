@@ -6,8 +6,9 @@ import DatePicker from "react-date-picker";
 import maxSubArraySum from "../../algorithm";
 
 function HomePage() {
-  const [total, setTotal] = React.useState();
-  const [value, onChange] = React.useState(new Date());
+  const [amount, setAmount] = React.useState();
+  const [day, onChange] = React.useState(new Date());
+  const [amountDay, setAmountDay] = React.useState([]);
 
   const [modal, setModal] = React.useState({
     show: false,
@@ -17,6 +18,16 @@ function HomePage() {
   function handleClose() {
     setModal({ show: false });
   }
+
+  function handleAdd() {
+    let obj = {
+      amount : amount,
+      day : day
+    }
+    setAmountDay([...amountDay, obj]);
+  }
+
+  console.log("AMOUNT DAY", amountDay)
 
   console.log(
     maxSubArraySum(
@@ -42,22 +53,58 @@ function HomePage() {
     });
   }
 
-  const handleChangeTotal = (event) => {
-    setTotal(event.target.value);
+  const handleChangeAmount = (event) => {
+    setAmount(event.target.value);
   };
 
   return (
     <div className="HomePage">
+      <br />
+      <br />
       <h3 className="question">
         {" "}
-        Digite e valor total e o valor pago. <br />
-        Clique em "Calcular" para calcular o troco
+        1. Selecione o dia e o valor total recebido nesse dia <br />
+        2. Clique em "Adicionar". Repita quantas vezes desejar <br />
+        3. Após adicionar todos os dias que deseja, clique em "Calcular" para calcular
       </h3>
+      <br />
+      <br />
       <br />
 
       <div>
-        <DatePicker onChange={onChange} value={value} />
       </div>
+
+      <label className="label">
+
+          Dia:
+          <br />
+          <DatePicker className="textField" onChange={onChange} value={day} />
+          <br />
+          <br />
+
+          Valor total deste dia (R$):
+          <br />
+
+          <input
+            className="textField"
+            type="number"
+            value={amount}
+            step="0.01"
+            precision={2}
+            onChange={handleChangeAmount}
+          />
+          <br />
+          <br />
+          
+          <button className="button" onClick={handleAdd}>
+            {" "}
+            Adicionar
+          </button>
+      </label>
+{/* 
+      <div>
+        <input onChange={onChange} value={day} />
+      </div> */}
 
       <Modal
         open={modal.show}
