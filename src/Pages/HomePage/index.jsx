@@ -20,11 +20,26 @@ function HomePage() {
   }
 
   function handleAdd() {
-    let obj = {
-      amount : amount,
-      day : day
+    let dayOk = true
+    amountDay.forEach(element => {
+      if (day === element.day) {
+        dayOk = false
+        setModal({
+          show: true,
+        });
+      }
+    });
+    
+    if (dayOk) {
+      let obj = {
+        amount : amount,
+        day : day
+      }
+      setAmountDay([...amountDay, obj]);
     }
-    setAmountDay([...amountDay, obj]);
+
+    setAmount("")
+
   }
 
   console.log("AMOUNT DAY", amountDay)
@@ -86,6 +101,7 @@ function HomePage() {
           <br />
 
           <input
+            name="inputValor"
             className="textField"
             type="number"
             value={amount}
@@ -95,16 +111,22 @@ function HomePage() {
           />
           <br />
           <br />
-          
+
           <button className="button" onClick={handleAdd}>
             {" "}
             Adicionar
           </button>
       </label>
-{/* 
-      <div>
-        <input onChange={onChange} value={day} />
-      </div> */}
+
+      <br />
+      <br />
+      <br />
+      <br />
+
+    <h3>Adicionados:</h3>
+    <ul>
+      { amountDay.map((amountDay) => <li  key = { day.toString()  }>{amountDay.day.toString()}     ---     R${amountDay.amount.toString()}</li>) }
+    </ul>
 
       <Modal
         open={modal.show}
@@ -118,7 +140,7 @@ function HomePage() {
         }}
       >
         <div className="modaldiv">
-          <h1>O valor pago precisa ser maior que o valor total</h1>
+          <h1>Já foi adicionado um valor para esse dia. Por favor, selecione outra data</h1>
 
           <button className="calculateButton" onClick={handleClose}>
             {" "}
