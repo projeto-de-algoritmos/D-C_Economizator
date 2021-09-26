@@ -62,9 +62,34 @@ function HomePage() {
   );
 
   function handleSubmit() {
+
+    amountDay.sort( function (a, b){
+      return new Date(a.day) - new Date(b.day);
+    });
+
+    console.log("AMOUNT DAY ORDENADO", amountDay)
+
+    let arraySum = []
+    
+
+    amountDay.forEach(element => {
+      let obj = {
+        value: 0,
+        date: ""
+      }
+
+      obj.value = element.amount;
+      obj.date = element.day.toString();
+      arraySum.push(obj)
+    });
+
+    console.log("ARRAY SUM", arraySum)
+
     history.push({
       pathname: "/trocado",
-      state: {},
+      state: {
+        arraySum : arraySum,
+      },
     });
   }
 
@@ -117,6 +142,10 @@ function HomePage() {
             Adicionar
           </button>
       </label>
+      <button className="button" onClick={handleSubmit}>
+          {" "}
+          Calcular
+        </button>
 
       <br />
       <br />

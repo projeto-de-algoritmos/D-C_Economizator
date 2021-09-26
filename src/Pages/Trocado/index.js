@@ -1,5 +1,5 @@
 import "./style.css";
-import trocador from "../../algorithm";
+import maxSubArraySum from "../../algorithm";
 import { useHistory } from "react-router-dom";
 
 const plural = {
@@ -33,9 +33,9 @@ const singular = {
 };
 
 function Trocado(history) {
-  let total = history.location.state.total;
-  let pago = history.location.state.pago;
-  let picks = history.location.state.picks;
+
+  let arraySum = history.location.state.arraySum;
+  console.log("ARRAY SUM PAG 2", arraySum)
 
   let h = useHistory();
 
@@ -45,36 +45,11 @@ function Trocado(history) {
     });
   }
 
-  let resultado = trocador(total, pago, picks);
+  // let resultado = maxSubArraySum(arraySum, 0, (arraySum.lenght - 1));
 
   return (
     <div className="resultArea">
-      <h1 className="title"> Troco: </h1>
-      {Object.entries(resultado).map((key, value) => {
-        return key[0] == "restante" ? (
-          <></>
-        ) : (
-          <div className="result">
-            {" "}
-            {key[1]} {key[1] > 1 ? plural[key[0]] : singular[key[0]]}
-          </div>
-        );
-      })}
-
-      {resultado["restante"] > 0.01 ? (
-        <div className="missing">
-          {" "}
-          Restaram R${resultado["restante"] / 100} que não podem ser trocados
-          <br></br>
-        </div>
-      ) : (
-        <></>
-      )}
-
-      <button className="calculateButton" onClick={goToHome}>
-        {" "}
-        Voltar
-      </button>
+      Blabla
     </div>
   );
 }
