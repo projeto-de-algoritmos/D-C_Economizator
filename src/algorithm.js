@@ -28,7 +28,7 @@ function maxCrossingSum(arr, l, m, h) {
     obj.elems.push(arr[i]);
 
     if (obj.sum > left_obj.sum) {
-      Object.assign(left_obj, obj);
+      left_obj = JSON.parse(JSON.stringify(obj));
     }
   }
 
@@ -43,7 +43,9 @@ function maxCrossingSum(arr, l, m, h) {
   for (let i = m + 1; i <= h; i++) {
     obj.sum = obj.sum + arr[i].value;
     obj.elems.push(arr[i]);
-    if (obj.sum > right_obj.sum) Object.assign(right_obj, obj);
+    if (obj.sum > right_obj.sum) {
+      right_obj = JSON.parse(JSON.stringify(obj));
+    }
   }
 
   // Return sum of elements on left and right of mid
@@ -54,6 +56,9 @@ function maxCrossingSum(arr, l, m, h) {
     sum: left_obj.sum + right_obj.sum,
     elems: left_obj.elems.concat(right_obj.elems),
   };
+
+  // console.log("left", left_obj);
+  // console.log("right", right_obj);
 
   return maxt(leftright, left_obj, right_obj);
 }
