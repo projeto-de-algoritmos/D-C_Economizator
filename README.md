@@ -11,11 +11,16 @@
 
 ## Sobre 
 O projeto tem como objetivo mostrar ao usuário a melhor sequência de dias, baseado nas entradas de datas e valor que forem inseridas.
+
 O usuário deve selecionar uma data e um valor (dependendo do contexto o valor pode ser o valor recebido naquele dia, o lucro do dia, etc) e clicar no botão "Adicionar". Pode repetir isso até que preenchar todas as datas que deseja.
+
 Após isso, deve clicar em "Calcular" para que seja calculada a melhor sequência de dias que teve.
 
 ## Screenshots
-Adicione 3 ou mais screenshots do projeto em funcionamento.
+![image](https://user-images.githubusercontent.com/38506981/134963053-2b6ba742-0785-442c-929c-4e7af55d26dd.png)
+![image](https://user-images.githubusercontent.com/38506981/134963098-bdea4518-a917-433e-924e-1d741dfea55d.png)
+![image](https://user-images.githubusercontent.com/38506981/134962971-aebc5d10-34c4-4127-b418-1d41bcf5a55b.png)
+
 
 ## Instalação 
 **Linguagem**: Javascript<br>
