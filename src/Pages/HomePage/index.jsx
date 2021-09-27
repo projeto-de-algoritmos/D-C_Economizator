@@ -3,10 +3,11 @@ import "./style.css";
 import { useHistory } from "react-router-dom";
 import Modal from "@material-ui/core/Modal";
 import DatePicker from "react-date-picker";
-import maxSubArraySum from "../../algorithm";
+import { format } from "date-fns";
+import ptBR from "date-fns/locale/pt-BR";
 
 function HomePage() {
-  const [amount, setAmount] = React.useState();
+  const [amount, setAmount] = React.useState(0);
   let today = new Date();
   today.setHours(0, 0, 0, 0);
   const [day, onChange] = React.useState(today);
@@ -24,7 +25,7 @@ function HomePage() {
   function handleAdd() {
     let dayOk = true;
     amountDay.forEach((element) => {
-      if (day.toString() == element.day.toString()) {
+      if (day.toString() === element.day.toString()) {
         dayOk = false;
         setModal({
           show: true,
@@ -48,8 +49,6 @@ function HomePage() {
       return new Date(a.day) - new Date(b.day);
     });
 
-    console.log("AMOUNT DAY ORDENADO", amountDay);
-
     let soma = 0;
     let media = 0;
 
@@ -71,8 +70,6 @@ function HomePage() {
       obj.date = element.day.toString();
       arraySum.push(obj);
     });
-
-    console.log("ARRAY SUM", arraySum);
 
     history.push({
       pathname: "/economizator",
@@ -141,7 +138,8 @@ function HomePage() {
       <ul>
         {amountDay.map((amountDay) => (
           <li key={amountDay.day.toString()}>
-            {amountDay.day.toString()} --- R${amountDay.amount}
+            {format(amountDay.day, "d 'de' MMMM 'de' yyyy", { locale: ptBR })}{" "}
+            --- R${amountDay.amount}
           </li>
         ))}
       </ul>
