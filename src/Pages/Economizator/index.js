@@ -5,7 +5,7 @@ import maxSubArraySum from "../../algorithm";
 import { useHistory } from "react-router-dom";
 import ptBR from 'date-fns/locale/pt-BR';
 
-function Trocado(history) {
+function Economizator(history) {
 
   let arraySum = history.location.state.arraySum;
   console.log("ARRAY SUM PAG 2", arraySum);
@@ -25,12 +25,14 @@ function Trocado(history) {
 
   console.log("result", result);
 
+  result.elems.sort(function (a, b) {
+    return new Date(a.date) - new Date(b.date);
+  });
   
   result.elems.forEach(element => {
     let formattedDate = format(new Date(element.date), "d 'de' MMMM 'de' yyyy", { locale: ptBR })
     dates.push(formattedDate);
   });
-
   
 
   return (
@@ -55,4 +57,4 @@ function Trocado(history) {
   );
 }
 
-export default Trocado;
+export default Economizator;

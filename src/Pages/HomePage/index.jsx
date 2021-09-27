@@ -40,7 +40,7 @@ function HomePage() {
       setAmountDay([...amountDay, obj]);
     }
 
-    setAmount(0);
+    setAmount("");
   }
 
   function handleSubmit() {
@@ -75,7 +75,7 @@ function HomePage() {
     console.log("ARRAY SUM", arraySum);
 
     history.push({
-      pathname: "/trocado",
+      pathname: "/economizator",
       state: {
         arraySum: arraySum,
       },

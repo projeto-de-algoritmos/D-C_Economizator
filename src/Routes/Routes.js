@@ -1,13 +1,13 @@
 import React from "react";
 import { Route, Switch, Redirect } from "react-router-dom";
 import HomePage from "../Pages/HomePage";
-import Trocado from "../Pages/Trocado";
+import Economizator from "../Pages/Economizator";
 
 const Router = () => {
   return (
     <Switch>
       <Route path="/" exact component={HomePage} />
-      <Route path="/trocado" exact component={Trocado} />
+      <Route path="/economizator" exact component={Economizator} />
 
       <Redirect path="*" to="/" />
     </Switch>
