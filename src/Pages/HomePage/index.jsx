@@ -50,6 +50,15 @@ function HomePage() {
 
     console.log("AMOUNT DAY ORDENADO", amountDay);
 
+    let soma = 0;
+    let media = 0;
+
+    amountDay.forEach((elem) => {
+      soma = soma + elem.amount;
+    });
+
+    media = soma / amountDay.length;
+
     let arraySum = [];
 
     amountDay.forEach((element) => {
@@ -58,7 +67,7 @@ function HomePage() {
         date: "",
       };
 
-      obj.value = parseFloat(element.amount);
+      obj.value = parseFloat(element.amount) - media;
       obj.date = element.day.toString();
       arraySum.push(obj);
     });
@@ -141,7 +150,7 @@ function HomePage() {
         open={modal.show}
         onClose={handleClose}
         aria-labelledby="simple-modal-title"
-        aria-describedby="simple-modal-description"
+        aria-describedby="simple-modal-deion"
         style={{
           display: "flex",
           alignItems: "center",
