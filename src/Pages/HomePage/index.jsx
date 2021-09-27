@@ -40,7 +40,7 @@ function HomePage() {
       setAmountDay([...amountDay, obj]);
     }
 
-    setAmount("");
+    setAmount(0);
   }
 
   function handleSubmit() {
@@ -58,7 +58,7 @@ function HomePage() {
         date: "",
       };
 
-      obj.value = element.amount;
+      obj.value = parseFloat(element.amount);
       obj.date = element.day.toString();
       arraySum.push(obj);
     });
@@ -74,7 +74,7 @@ function HomePage() {
   }
 
   const handleChangeAmount = (event) => {
-    setAmount(event.target.value);
+    setAmount(parseFloat(event.target.value));
   };
 
   return (
@@ -132,7 +132,7 @@ function HomePage() {
       <ul>
         {amountDay.map((amountDay) => (
           <li key={amountDay.day.toString()}>
-            {amountDay.day.toString()} --- R${amountDay.amount.toString()}
+            {amountDay.day.toString()} --- R${amountDay.amount}
           </li>
         ))}
       </ul>
